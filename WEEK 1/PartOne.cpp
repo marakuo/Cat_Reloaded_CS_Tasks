@@ -65,8 +65,45 @@ int main() {
 
 
 ////////////////////////
+// longest common prefix 
 
 
+#include <iostream>
+using namespace std;
+string commonPrefix(string str1, string str2) {
+    string result = "";
+    int minLength;
+    if (str1.length() < str2.length()) minLength = str1.length();
+    else if (str1.length() > str2.length()) minLength = str2.length();
+    for (int i =0 ; i < minLength ; i++) {
+        if (str1[i] == str2[i]) {
+            result += str1[i];
+
+        }else break;
+
+    }
+    return result;
+}
+string commonLongestPrefic(string arr[], int size) {
+    if (size == 0) return "";
+   string common = arr[0];
+    for (int i =0 ; i < size ; i++) {
+        common = commonPrefix(common, arr[i]);
+        if (common == "") return "";
+
+
+    }
+    return common;
+
+}
+int main() {
+    string arr[] ={"john", "johan", "johnathan"};
+    cout << commonLongestPrefic(arr, 3) << endl;
+
+    
+
+    return 0;
+}
 
 
 
