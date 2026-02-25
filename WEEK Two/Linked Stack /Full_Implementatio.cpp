@@ -23,20 +23,14 @@ public:
         return (top == nullptr);
     }
     //push
-    void push (t element) {
-        Node*newnode = new Node();
-        newnode->Data = element;
-        if (isEmpty()) {
-            newnode->Next = nullptr;
-            top = newnode;
-        }
-        else {
-            // stack has items
-
-            newnode->Next = top;
-            top = newnode;
-        }
+    void push(t element) {
+        Node*newNode = new Node;
+        newNode->data = element;
+        newNode->next = top;
+        top = newNode;
+    
     }
+// display 
     void display() {
         Node*temp = top;
         while (temp != nullptr) {
@@ -47,14 +41,16 @@ public:
         cout<<endl;
     }
     // pop
-    t pop() {
-        int val = top->Data;
-        Node*delptr = top;
-        top = top->Next;
-        delete delptr;
-        return val;
+    void pop() {
+        if (isEmpty()) {
+            cout << "Stack is empty" << endl;
+        }
+        else {
+            Node*delptr =top;
+            top = top->next;
+            delete delptr;
 
-
+        }
     }
     //peek
     t peek() {
