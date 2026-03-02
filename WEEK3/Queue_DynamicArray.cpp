@@ -16,11 +16,15 @@ public:
     ArrQueue(int size): front(0), count(0) {
 
         if (size <=0) maxSize = 100;
-        maxSize = size;
+        else maxSize = size;
         arr = new int[maxSize];
         rear= maxSize-1;
 
 
+    }
+
+    ~ArrQueue() {
+        delete[] arr;
     }
     // is empty
     bool isEmpty() {
@@ -68,6 +72,17 @@ public:
         { cout << arr[(front + i) % maxSize] << " ";}
         cout << endl;
     }
+    int search(int data) {
+        assert(!isEmpty());
+        for (int i =0; i < count; i++) {
+            if (data == arr[(front + i) % maxSize] ) {
+               return (front + i) % maxSize;
+            }
+
+
+        }
+       return -1;
+    }
 
 
 
@@ -78,7 +93,7 @@ public:
 
 };
 int main() {
-    ArrQueue arr(3);
+    ArrQueue arr(5);
     arr.enqueue(10);
     arr.enqueue(11);
     arr.enqueue(12);
@@ -90,6 +105,9 @@ int main() {
     cout <<endl;
     arr.enqueue(14);
     arr.printQueue();// 11 12 13 14
+    cout << arr.search(11) << endl;
+    cout << arr.search(13) << endl;
+
 
 
 
