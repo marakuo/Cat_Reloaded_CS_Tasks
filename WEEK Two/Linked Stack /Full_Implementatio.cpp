@@ -25,8 +25,8 @@ public:
     //push
     void push(t element) {
         Node*newNode = new Node;
-        newNode->data = element;
-        newNode->next = top;
+        newNode->Data = element;
+        newNode->Next = top;
         top = newNode;
     
     }
